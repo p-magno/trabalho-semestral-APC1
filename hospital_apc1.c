@@ -45,9 +45,17 @@ int main(){
         printf(CYN "|   " MAG "3. Modificar dados de paciente" CYN "   |\n" reset);
         printf(CYN "|   " RED "4. Sair" CYN "                          |\n" reset);
         printf(CYN "+------------------------------------+\n" reset);
-        printf("Escolha uma opcao: ");
-        scanf("%i", &opcao);
-        while (getchar() != '\n');
+        char input_str[10];
+        int valid_input = 0;
+        while (!valid_input) {
+            printf("Escolha uma opcao: ");
+            fgets(input_str, sizeof(input_str), stdin);
+            if (sscanf(input_str, "%d", &opcao) == 1) {
+                valid_input = 1;
+            } else {
+                printf("Entrada invalida. Por favor, digite um numero.\n");
+            }
+        }
         system("clear");
         printf(reset);
 
@@ -163,10 +171,18 @@ int main(){
                 if (num_pacientes == 0) {
                     printf("Nenhum paciente para modificar.\n");
                 } else {
-                    int id_modificar;
-                    printf("Digite o numero do paciente para modificar (1 a %d): ", num_pacientes);
-                    scanf("%d", &id_modificar);
-                    while ((getchar()) != '\n');
+                    int id_modificar = 0;
+                    char id_modificar_str[10];
+                    int valid_id_input = 0;
+                    while (!valid_id_input) {
+                        printf("Digite o numero do paciente para modificar (1 a %d): ", num_pacientes);
+                        fgets(id_modificar_str, sizeof(id_modificar_str), stdin);
+                        if (sscanf(id_modificar_str, "%d", &id_modificar) == 1) {
+                            valid_id_input = 1;
+                        } else {
+                            printf("Entrada invalida. Por favor, digite um numero.\n");
+                        }
+                    }
 
                     if (id_modificar >= 1 && id_modificar <= num_pacientes) {
                         int index = id_modificar - 1;

@@ -18,6 +18,8 @@ Para testar o programa, você pode compilá-lo com GCC e executá-lo no terminal
 gcc hospital_apc1.c -lm -o a.out
 ./a.out
 
+Atualização: Implementação de validação para entradas não numéricas no menu
+A estratégia usada foi implementar a validação de entrada usando "fgets"e "sscanf" ao invés de "scanf", para evitar loops e garantir o bom funcionamento do código
 
 Muito obrigado!
 
